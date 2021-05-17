@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
 
 import './login.styles.scss';
 
 class Login extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       email: '',
       password: ''
@@ -52,10 +52,12 @@ class Login extends Component {
             value={this.state.password}
             handleChange={ this.handleChange }
             label='Senha'
+            pattern='\d{6}'
+            title='A senha deve conter apenas 6 números.'
             required
           />
           
-          <button type="submit">Login</button>
+          <CustomButton type="submit" color='green'>Login</CustomButton>
         </form>
       </div>
     )
