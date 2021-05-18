@@ -16,11 +16,21 @@ class Login extends Component {
 
   handleSubmit = async event => {
     event.preventDefault()
-
     const { email, password } = this.state;
 
-    try {
-      // API
+    try {   
+      const body = { email: email, password: password };
+      
+      fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }).then(r => r.json())
+        .then(message => console.log(message));
+      
       this.setState({ email: '', password: '' })
     } catch (error) {
       console.log(error);
