@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   #API
   namespace :api, defaults: { format: :json } do
-    get "/login" to: "profiles#login"
+    post "/login", to: "profiles#login"
   end
 end
