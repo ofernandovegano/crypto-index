@@ -13,7 +13,7 @@ class Api::ProfilesController < ApplicationController
       user = Profile.create(profile_params)
     end
  
-    return render json: { user: user.first[:email] }, status: :ok
+    return render json: { token: rand(36**16).to_s(36) }, status: :ok
   end
 
   private
