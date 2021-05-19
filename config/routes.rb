@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   #API
   namespace :api, defaults: { format: :json } do
     post "/login", to: "profiles#login"
+
+    namespace :crypto do
+      resources :btc, only: [:index]
+    end
   end
 end
