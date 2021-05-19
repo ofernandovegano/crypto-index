@@ -4,11 +4,33 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 0 auto;
+  margin: auto;
+  height: 100vh;
+
+  h2 {
+    text-align: center;
+  }
 
   .btn-update-value {
     background-color: #C4C4C4;
     border: none;
+    width: 60%;
+    padding: 10px 0;
+    margin: 0 auto;
+    
+    &:hover {
+      background-color: #d1cfcf;
+    }
+  }
+  .bitcoin-value {
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 80%;
+      margin: 0 auto;
+    }
   }
   .currencies {
     display: flex;
@@ -25,7 +47,8 @@
     p {
       background-color: #C4C4C4;
       margin: 0;
-      padding: 20px;
+      padding: 10px 20px;
+      text-align: center;
     }
   }
 

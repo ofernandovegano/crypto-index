@@ -2,9 +2,9 @@ import React from 'react';
 
 import './homepage.styles.scss';
 
-const Homepage = () => (
+const Homepage = (props) => (
   <div className="homepage">
-    <button className='btn-update-value'>Atualizar valor monetário</button>
+    <button className='btn-update-value' onClick={ () => props.history.push("/values/new") }>Atualizar valor monetário</button>
 
     <div className="bitcoin-value">
       <h2>BTC</h2>    
