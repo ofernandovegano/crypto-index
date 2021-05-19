@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
     namespace :crypto do
       resources :btc, only: [:index]
+      post "/btc", to: "btc#update_currencies"
+
+      get "/btc/currencies", to: "btc#currencies"
     end
   end
 end

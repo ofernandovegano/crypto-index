@@ -21,7 +21,7 @@ class Login extends Component {
     try {   
       const body = { email: email, password: password };
       
-      fetch('/api/login', {
+      const result = fetch('/api/login', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -29,7 +29,11 @@ class Login extends Component {
         },
         body: JSON.stringify(body)
       }).then(r => r.json())
-        .then(message => localStorage.setItem('token', message.token));
+        .then(message => {
+          localStorage.setItem('token', message.token)
+          return message
+        })
+        .then( message => alert(`Você está logado =D O seu token é token: ${message.token}`));
       
       this.setState({ email: '', password: '' })
       this.props.history.push('/')

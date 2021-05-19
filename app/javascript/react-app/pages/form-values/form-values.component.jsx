@@ -10,33 +10,34 @@ class FormValues extends Component {
     super(props)
     this.state = {
       currency: '',
-      newValue: ''
+      value: ''
     }
   }
 
-  // handleSubmit = async event => {
-  //   event.preventDefault()
-  //   const { email, password } = this.state;
+  handleSubmit = async event => {
+    event.preventDefault()
+    const { currency, value } = this.state;
 
-  //   try {   
-  //     const body = { email: email, password: password };
+    try {   
+      const body = { currency, value, token: localStorage.getItem('token') };
+      // Se eu tivesse mais tempo, eu não deixaria a url como está abaixo com 'localhost'
+      fetch('http://localhost:3000/api/crypto/btc', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }).then(r => r.json())
+        .then(data => alert(data.message))
       
-  //     fetch('/api/login', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(body)
-  //     }).then(r => r.json())
-  //       .then(message => localStorage.setItem('token', message.token));
-      
-  //     this.setState({ email: '', password: '' })
-  //     this.props.history.push('/')
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // }
+      this.setState({ currency: '', value: '' })
+      this.props.history.push('/')
+    } catch (error) {
+      alert(error);
+    }
+    this.props.history.push('/')
+  }
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -64,11 +65,13 @@ class FormValues extends Component {
               </div>
 
               <FormInput
-                name='newValue'
+                name='value'
                 type='text'
                 handleChange={this.handleChange}
-                value={this.state.newValue}
+                value={this.state.value}
                 label='Novo valor'
+                pattern='\d*'
+                title='O valor deve ser um número inteiro.'
                 required
               />
             </div>

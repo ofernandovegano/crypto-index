@@ -1,5 +1,5 @@
 class Api::ProfilesController < ApplicationController
-  skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token
 
   def login
     user = Profile.where(email: params[:email]) 
