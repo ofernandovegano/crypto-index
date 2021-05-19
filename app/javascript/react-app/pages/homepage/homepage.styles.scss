@@ -1,0 +1,32 @@
+.homepage {
+
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+
+  .btn-update-value {
+    background-color: #C4C4C4;
+    border: none;
+  }
+  .currencies {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .currency-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+  }
+  .currency-value {
+    p {
+      background-color: #C4C4C4;
+      margin: 0;
+      padding: 20px;
+    }
+  }
+
+ }

@@ -29,11 +29,12 @@ class Login extends Component {
         },
         body: JSON.stringify(body)
       }).then(r => r.json())
-        .then(message => console.log(message));
+        .then(message => localStorage.setItem('token', message.token));
       
       this.setState({ email: '', password: '' })
+      this.props.history.push('/')
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   }
 
